@@ -23,6 +23,11 @@
       url: '/myitems/edit/:id',
       templateUrl: 'items/item-form.html',
       controller: 'editItem'
+    })
+    .state('myItemsSub', {
+      url: '/myitems/sub/:id',
+      templateUrl: 'items/item-form.html',
+      controller: 'subItem'
     });
   });
 
@@ -71,9 +76,17 @@ module.controller('editItem', function($scope, $stateParams, Item, $state) {
       $state.go('myItemsView');
     });
   };
+});
 
-  $scope.delete = function() {
-    //TODO: is there a button for that?
+module.controller('subItem', function($scope, $stateParams, Item, $state) {
+  $scope.app.configHeader({back:true, title: 'Add item'});
+  $scope.action = 'sub'; //Specify to the template we are adding an item, since it the same template as the one for editing.
+  var item = Item.get({id: $stateParams.id}, function() {
+    //Just load the item and display it via the bindings with items.html
+    $scope.item = item;
+  });
+  $scope.submit = function() {
+    //Item is available thanks to restApi.js
     item.$delete(function() {
       $state.go('myItemsView');
     });

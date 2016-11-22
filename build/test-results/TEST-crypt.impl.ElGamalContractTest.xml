@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="crypt.impl.ElGamalContractTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-09-20T20:33:45" hostname="chafio-VirtualBox" time="3.016">
+<?xml version="1.1" encoding="UTF-8"?>
+<testsuite name="crypt.impl.ElGamalContractTest" tests="1" failures="0" errors="0" timestamp="2016-11-22T15:38:38" hostname="debian" time="1.711">
   <properties/>
-  <testcase name="test" classname="crypt.impl.ElGamalContractTest" time="3.016"/>
+  <testcase name="test" classname="crypt.impl.ElGamalContractTest" time="1.711"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

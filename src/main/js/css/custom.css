@@ -106,4 +106,8 @@ nav ul li .linknodeco:active {
 -webkit-animation-iteration-count:infinite; //on dit que l'animation se répétera à l'infini.
 }
 
-
+img {
+	float: right;
+	height: 200px;
+	width: 200px;
+}
