@@ -135,3 +135,15 @@ RESTAPISERVER = 'http://localhost:8081';
     });
 
 })();
+
+function isUserConnected($rootScope, $scope, $state){
+		if ($scope.app.userid != undefined) {
+			$rootScope.userLogged = true;
+			console.log("user connected "+$scope.app.userid );
+		}
+		else{
+			$rootScope.userLogged = false;
+			console.log("user not connected "+$scope.app.userid +" redirect->login");
+			$state.go('login');
+		}
+	}

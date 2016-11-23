@@ -32,7 +32,8 @@
   });
 
 // 'View items' state controller function
-module.controller('viewItems', function($scope, Item) {
+module.controller('viewItems', function($rootScope,$scope,$state, Item) {
+  isUserConnected($rootScope, $scope, $state);
   $scope.app.configHeader({title: 'Items', contextButton: 'addItem'});
   $scope.items = [];
   $scope.items = Item.query(); //Fetch items, thanks to restApi.js
@@ -40,7 +41,8 @@ module.controller('viewItems', function($scope, Item) {
 });
 
 // 'Add item' state controller function
-module.controller('addItem', function($scope, Item, $state) {
+module.controller('addItem', function($rootScope,$scope, Item, $state) {
+  isUserConnected($rootScope, $scope, $state);
   $scope.app.configHeader({back:true, title: 'Add item'});
   $scope.action = 'add'; //Specify to the template we are adding an item, since it the same template as the one for editing.
   $scope.submit = function() {
@@ -57,7 +59,8 @@ module.controller('addItem', function($scope, Item, $state) {
 
 
 // 'Edit item' state controller function
-module.controller('editItem', function($scope, $stateParams, Item, $state) {
+module.controller('editItem', function($rootScope,$scope, $stateParams, Item, $state) {
+  isUserConnected($rootScope, $scope, $state);
   $scope.app.configHeader({back: true, title: 'Edit item'});
   $scope.action = 'edit';
   $scope.form = {};
@@ -78,7 +81,8 @@ module.controller('editItem', function($scope, $stateParams, Item, $state) {
   };
 });
 
-module.controller('subItem', function($scope, $stateParams, Item, $state) {
+module.controller('subItem', function($rootScope,$scope, $stateParams, Item, $state) {
+  isUserConnected($rootScope, $scope, $state);
   $scope.app.configHeader({back:true, title: 'Add item'});
   $scope.action = 'sub'; //Specify to the template we are adding an item, since it the same template as the one for editing.
   var item = Item.get({id: $stateParams.id}, function() {
@@ -94,7 +98,8 @@ module.controller('subItem', function($scope, $stateParams, Item, $state) {
 });
 
 // 'View item' state controller function
-module.controller('viewItem', function($scope, $stateParams, Item) {
+module.controller('viewItem', function($rootScope,$scope, $stateParams, Item) {
+  isUserConnected($rootScope, $scope, $state);
   $scope.app.configHeader({back: true, title: 'View item', contextButton: 'editItem', contextId: $stateParams.id});
   var item = Item.get({id: $stateParams.id}, function() {
     //Just load the item and display it via the bindings with items.html

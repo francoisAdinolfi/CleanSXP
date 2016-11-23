@@ -12,14 +12,13 @@
 	});
 
 	// 'about' state controller function
-	module.controller('contact', function($rootScope, $scope, Item) {
-		//isUserConnected($rootScope, $scope);
+	module.controller('contact', function($rootScope, $scope, $state, Item) {
+		isUserConnected($rootScope, $scope, $state);
 		$scope.app.configHeader({
             title: "Contact",
             back: false,
             contextButton: null
         });
-		console.log("cfg head: "+$scope.app.configHeader);
 		
 		
 		

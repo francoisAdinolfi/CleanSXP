@@ -12,7 +12,8 @@
     });
   });
 
-  module.controller('settings', function($scope) {
+  module.controller('settings', function($rootScope,$scope,$state) {
+	isUserConnected($rootScope, $scope, $state);
     $scope.machin = "truc";
   });
 

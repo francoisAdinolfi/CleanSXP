@@ -10,7 +10,8 @@
             .state('search', {
                 url: '/search',
                 templateUrl: 'search.html',
-                controller: function($scope, $http, Oboe) {
+                controller: function($rootScope,$scope, $http, $state, Oboe) {
+					isUserConnected($rootScope, $scope, $state);
                     $scope.app.configHeader({title: 'Search'});
 
                     $scope.results = []; //The currently received and displaid results
@@ -74,7 +75,8 @@
             .state('searchViewItem', {
 			  url: '/search/view/:id',
 			  templateUrl: 'items/item.html',
-			  controller: function($scope, $stateParams, Item) {
+			  controller: function($rootScope,$scope, $state, $stateParams, Item) {
+				  isUserConnected($rootScope, $scope, $state);
 				  var item = Item.get({id: $stateParams.id}, function() {
 				    $scope.app.configHeader({back: true, title: 'Search : '+item.title, contextButton: 'null', contextId: $stateParams.id});
 					//Just load the item and display it via the bindings with items.html
