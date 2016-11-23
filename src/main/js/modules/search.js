@@ -69,6 +69,22 @@
                     }
 
                 }
-            });
+            })
+            
+            .state('searchViewItem', {
+			  url: '/search/view/:id',
+			  templateUrl: 'items/item.html',
+			  controller: function($scope, $stateParams, Item) {
+				  var item = Item.get({id: $stateParams.id}, function() {
+				    $scope.app.configHeader({back: true, title: 'Search : '+item.title, contextButton: 'null', contextId: $stateParams.id});
+					//Just load the item and display it via the bindings with items.html
+					$scope.item = item;
+				  });
+				}
+			});
+            
+            
+            
+            
     });
 })();
