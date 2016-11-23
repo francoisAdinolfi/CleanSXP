@@ -63,7 +63,7 @@
                         
                         //affiche plus d'otpions dans le side-menu (ng-show="userLogged")
 						//$rootScope est "le $scope principal" de l'application il "voit" tous les scopes quelque soit le state/controller...
-                        isUserConnected($rootScope,$scope);
+                        isUserConnected($rootScope,$scope,$state);
                         
                         $state.go('myItemsView');
                         //go to the state that shows items
@@ -78,7 +78,7 @@
     });
 
     module.controller('account', function($rootScope, $scope, $state, $http, User) {
-		isUserConnected($rootScope,$scope);
+		isUserConnected($rootScope,$scope,$state);
         $scope.app.configHeader({
             title: "Account"
         });
@@ -95,16 +95,20 @@
     });
 
     module.controller('logout', function($rootScope, $scope, $state, $http) {
-		isUserConnected($rootScope,$scope);
+		isUserConnected($rootScope,$scope,$state);
         $scope.app.configHeader({
             title: "logout"
         });
         $http.get(RESTAPISERVER + "/api/users/logout");
         $scope.app.setCurrentUser(null);
+        $scope.app.userid = undefined;
+        
+        //on cache les options dans le side-menu
+        $rootScope.userLogged = false;
     });
 
     module.controller('subscribe', function($rootScope, $scope, $state, $http) {
-		isUserConnected($rootScope,$scope);
+		isUserConnected($rootScope,$scope,$state);
         $scope.app.configHeader({
             title: "Subscribe",
             back: true //display the back button
