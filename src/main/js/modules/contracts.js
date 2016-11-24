@@ -15,9 +15,14 @@
 		.state('addContract', {
 			url: '/contracts/add',
 			templateUrl: 'newContract.html',
-			controller: function($rootScope, $scope, $state) {
+			controller: function($rootScope, $scope, $state, User) {
 				isUserConnected($rootScope,$scope,$state);
 				$scope.app.configHeader({back: true, title: 'New Contract'});
+				var user = User.get({
+            		id: $scope.app.userid
+        		}, function() {
+            		$scope.user = user;
+        		});
 			}
 		});
 	});
