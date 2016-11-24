@@ -98,7 +98,7 @@ module.controller('subItem', function($rootScope,$scope, $stateParams, Item, $st
 });
 
 // 'View item' state controller function
-module.controller('viewItem', function($rootScope,$scope, $stateParams, Item) {
+module.controller('viewItem', function($rootScope, $scope, $stateParams, $state, Item) {
   isUserConnected($rootScope, $scope, $state);
   $scope.app.configHeader({back: true, title: 'View item', contextButton: 'editItem', contextId: $stateParams.id});
   var item = Item.get({id: $stateParams.id}, function() {
