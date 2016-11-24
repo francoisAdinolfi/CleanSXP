@@ -108,7 +108,6 @@
     });
 
     module.controller('subscribe', function($rootScope, $scope, $state, $http) {
-		isUserConnected($rootScope,$scope,$state);
         $scope.app.configHeader({
             title: "Subscribe",
             back: true //display the back button
