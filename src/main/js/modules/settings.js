@@ -44,7 +44,7 @@
 			$scope.error = true;
 			$scope.changed = false;
 		}
-		else{
+		else if($scope.form.pass1.length > 0){
 			$scope.error = false;
 			$scope.changed = true;
 			//new pass = $scope.form.pass1 
