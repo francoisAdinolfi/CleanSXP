@@ -61,7 +61,7 @@
                         $scope.app.userid = obj.userid;
                         //remember userid
                         
-                        //affiche plus d'otpions dans le side-menu (ng-show="userLogged")
+                        //affiche plus d'options dans le side-menu (ng-show="userLogged")
 						//$rootScope est "le $scope principal" de l'application il "voit" tous les scopes quelque soit le state/controller...
                         isUserConnected($rootScope,$scope,$state);
                         
@@ -107,7 +107,9 @@
         $rootScope.userLogged = false;
     });
 
-    module.controller('subscribe', function($rootScope, $scope, $state, $http) {
+    module.controller('subscribe', function($scope, $state, $http) {
+      $http.delete(RESTAPISERVER + "/api/users")
+        
         $scope.app.configHeader({
             title: "Subscribe",
             back: true //display the back button
@@ -116,18 +118,45 @@
         $scope.form.server = RESTAPISERVER;
 
         $scope.submit = function() {
+            $scope.error = false;
+            $scope.errorServer = false;
             RESTAPISERVER = $scope.form.server;
             var user = $scope.form.login;
             var password = $scope.form.password;
-            $http.get(RESTAPISERVER + "/api/users/subscribe?login=" + user + "&password=" + password).then(function(response) {
-                var data = response.data;
-                $scope.app.setCurrentUser(user);
-                $http.defaults.headers.common['Auth-Token'] = data.token;
-                $scope.app.userid = data.userid;
-                $state.go("myItemsView");
-            }, function(response) {
-								//TODO: describe here what happens if server not found.
-            });
+            $http.get(RESTAPISERVER + "/api/users/").then(
+              function(response) {
+                  var obj = response.data;
+                  if (obj.error) {
+                    $scope.errorServer = true;
+                  }
+                  else if(user == undefined){
+                    $scope.error = true;
+                  } else if(password == undefined){
+                    $scope.error = true;
+                  } else {
+                    var flag = 1;
+                    for(var i = 0; i < obj.length; i++){
+                      if(obj[i].nick == user){
+                        $scope.errorLogin = true;
+                        flag = 0;
+                      }
+                    }
+                    if(flag){
+                      $http.get(RESTAPISERVER + "/api/users/subscribe?login=" + user + "&password=" + password).then(
+                        function(response) {
+                          var data = response.data;
+                          $scope.app.setCurrentUser(user);
+                          $http.defaults.headers.common['Auth-Token'] = data.token;
+                          $scope.app.userid = data.userid;
+                          $state.go("myItemsView");
+                        }, function(reponse) {
+                          $scope.errorServer = true;
+                        });
+                    }
+                  }
+              }, function(response) {
+                $scope.errorServer = true;
+              });
         };
     });
 
