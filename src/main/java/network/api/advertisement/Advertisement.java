@@ -35,7 +35,6 @@ public interface Advertisement {
 	public void publish(Peer peer);
 	
 	/**
-
 	 * Initialize this advertisement with an xml document
 	 * @param doc
 	 */
