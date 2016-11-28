@@ -28,9 +28,11 @@
 			var msg = $scope.form.message;
 			
 			console.log("submit = nom:"+nom+" mail:"+mailFrom+" msg:'"+msg+"'");
+			
+			$state.go('myItemsView');
 		}
 		
-		
+		//TODO configure the sending of the request
 	});
 	
 })();
