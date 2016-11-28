@@ -30,7 +30,7 @@
   });
   
   module.controller('password', function($rootScope,$scope,$state,$http, User) {
-	isUserConnected($rootScope, $scope, $state);
+	//isUserConnected($rootScope, $scope, $state);
 	$scope.app.configHeader({contextButton:'', title: 'Settings : change password', back:true});
 	var user = User.get({
             id: $scope.app.userid
@@ -77,9 +77,7 @@
                 	$scope.errorServer = true;
                 });
 			
-			
-			
-			
+				$state.go("logout");
 			
 		}
 	}
