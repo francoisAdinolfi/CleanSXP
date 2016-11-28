@@ -6,14 +6,19 @@
     </div>
   </div>
   <div class="form-group">
-  	<label for="user-obj" class="col-sm-2 control-label">Your Object</label>
+  	<label for="user-obj" class="col-sm-2 control-label">Your Item</label>
   	<select id="items-list"></select> 
   </div>
-  <div>
-	<input type="text" placeholder="User research" list="userstrade" data-ng-model="trader" />
-		<datalist id="usertrade">
-			<option data-ng-repeat="item in userList" value="{{item.name}}" />
-		</datalist>
+  <div class="form-group">
+  	<label for="user-trade" class="col-sm-2 control-label">Other User</label>
+	<input type="text" placeholder="User research" list="cards" data-ng-model="card" />
+	<datalist id="cards">
+		<option data-ng-repeat="item in userList" value="{{item.name}}" />
+	</datalist>
+  </div>
+  <div class="form-group">
+  	<label for="otheruser-obj" class="col-sm-2 control-label">Other User Item</label>
+  	<select id="otheruser-items-list"></select> 
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">

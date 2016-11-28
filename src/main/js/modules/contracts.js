@@ -47,11 +47,33 @@
         				for(i=0; i<userList.length; i++){
         					$scope.userList[i] = { 'name' : userList[i].nick };
         				}
-			 
-				// saisie du nom de la carte
-				$scope.trader = null;
         			}
         		);
+        		
+        		$scope.$watch("card", function(newValue, oldValue) {
+					if ($scope.card.length > 0) {
+					 	var result = document.getElementById("otheruser-items-list");
+					 	while (result.firstChild) {
+							result.removeChild(result.firstChild);
+						}
+						
+						$http.get(RESTAPISERVER + "/api/users/").then(
+							function(response){
+								var itemList = response.data;
+								console.debug(itemList);
+							}
+						);
+						var item = document.createElement("option");
+						item.value = $scope.card;
+						item.text = $scope.card;
+						result.appendChild(item);
+					}
+			  });
+        		
+        		$scope.submit = function (){
+        			//TODO add Contract to SGBD
+        			$state.go("contracts");
+        		}
 			}
 		});
 	});
