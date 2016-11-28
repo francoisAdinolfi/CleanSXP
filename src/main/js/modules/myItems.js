@@ -91,6 +91,7 @@ module.controller('subItem', function($rootScope,$scope, $stateParams, Item, $st
   });
   $scope.submit = function() {
     //Item is available thanks to restApi.js
+    //TODO delete from the sgbd
     item.$delete(function() {
       $state.go('myItemsView');
     });
