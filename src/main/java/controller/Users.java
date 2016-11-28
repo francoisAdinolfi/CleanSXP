@@ -156,4 +156,36 @@ public class Users {
 		return null;
 	}
 	
+	
+	
+	
+	
+	@GET
+	@Path("/password")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String login(
+			@QueryParam("login") String login,
+			@QueryParam("password") String password,
+			@QueryParam("passwordnew") String passwordNew) {
+		
+		Authentifier auth = Application.getInstance().getAuth();
+		UserSyncManager em = new UserSyncManagerImpl();
+		User u = em.getUser(login, password);
+		if(u != null) {
+			Hasher hasher = HasherFactory.createDefaultHasher();
+			u.setSalt(HasherFactory.generateSalt());
+			hasher.setSalt(u.getSalt());
+			u.setPasswordHash(hasher.getHash(passwordNew.getBytes()));
+
+			em.begin();
+			em.persist(u);
+			em.end();
+		}
+		return null;
+	}
+	
+	
+	
+	
+	
 }

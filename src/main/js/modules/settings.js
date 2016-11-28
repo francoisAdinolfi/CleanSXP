@@ -29,7 +29,7 @@
 	
   });
   
-  module.controller('password', function($rootScope,$scope,$state, User) {
+  module.controller('password', function($rootScope,$scope,$state,$http, User) {
 	isUserConnected($rootScope, $scope, $state);
 	$scope.app.configHeader({contextButton:'', title: 'Settings : change password', back:true});
 	var user = User.get({
@@ -48,7 +48,39 @@
 			$scope.error = false;
 			$scope.changed = true;
 			//new pass = $scope.form.pass1 
+			
+			var userName = user.nick;
+            var password = $scope.form.passPrevious;
+			var passwordNew = $scope.form.pass1
 			/*insert request/function to change the password in the DB*/
+			$http.get(RESTAPISERVER + "/api/users/password?login=" + userName + "&password=" + password + "&passwordnew=" + passwordNew).then(
+                function(response) {
+					console.log("http.get response : ");
+                    //if GET succeeds
+                    var obj = response.data;
+                    //load the answer
+                    console.debug(obj);
+                    //print it to the console just for debugging
+                    if (obj.error) {
+                    	//user feedback
+                        $scope.errorLogin = true;
+                    } 
+                    else if(user == undefined){
+                    	$scope.errorLogin = true;
+                    } else {
+                        $state.go('settings');
+                    }
+
+                },
+                function(response) {
+                	//user feedback
+                	$scope.errorServer = true;
+                });
+			
+			
+			
+			
+			
 		}
 	}
 
