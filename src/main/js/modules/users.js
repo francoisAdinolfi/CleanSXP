@@ -108,7 +108,6 @@
     });
 
     module.controller('subscribe', function($scope, $state, $http) {
-      $http.delete(RESTAPISERVER + "/api/users")
         
         $scope.app.configHeader({
             title: "Subscribe",
