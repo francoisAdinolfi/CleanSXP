@@ -61,11 +61,7 @@
                             }
                         });
 
-                        /*$http.get(RESTAPISERVER + "/api/search/simple?title=" + $scope.research).then(function(response) {
-                        	$scope.results = response.data;
-                        }, function(response) {
-
-                        });*/
+              
                     }
 
                 }

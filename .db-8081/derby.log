@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Tue Nov 22 16:54:01 CET 2016:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0158-8cbe-71ac-00001bf728b3 
-on database directory /home/nicolas/CleanSXP/.db-8081/simpleDb with class loader sun.misc.Launcher$AppClassLoader@4e823618 
-Loaded from file:/home/nicolas/.gradle/caches/artifacts-23/filestore/org.apache.derby/derby/10.12.1.1/jar/75070c744a8e52a7d17b8b476468580309d5cd09/derby-10.12.1.1.jar
+Tue Nov 29 15:56:44 CET 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0158-b096-8542-00001bf728b3 
+on database directory /home/chafio/Bureau/CleanSXP/.db-8081/simpleDb with class loader sun.misc.Launcher$AppClassLoader@3d4eac69 
+Loaded from file:/home/chafio/.gradle/caches/modules-2/files-2.1/org.apache.derby/derby/10.12.1.1/75070c744a8e52a7d17b8b476468580309d5cd09/derby-10.12.1.1.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.7.0_111-b01
-user.dir=/home/nicolas/CleanSXP
+java.runtime.version=1.8.0_111-8u111-b14-2ubuntu0.16.04.2-b14
+user.dir=/home/chafio/Bureau/CleanSXP
 os.name=Linux
 os.arch=amd64
-os.version=3.16.0-4-amd64
+os.version=4.4.0-47-generic
 derby.system.home=./.db-8081/
 Database Class Loader started - derby.database.classpath=''
