@@ -1,7 +1,7 @@
 <?xml version="1.1" encoding="UTF-8"?>
-<testsuite name="crypt.impl.ElGamalEncrypterTest" tests="1" failures="0" errors="0" timestamp="2016-11-22T15:38:40" hostname="debian" time="0.016">
+<testsuite name="crypt.impl.ElGamalEncrypterTest" tests="1" failures="0" errors="0" timestamp="2016-11-30T12:27:39" hostname="debian" time="0.023">
   <properties/>
-  <testcase name="test" classname="crypt.impl.ElGamalEncrypterTest" time="0.016"/>
+  <testcase name="test" classname="crypt.impl.ElGamalEncrypterTest" time="0.023"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

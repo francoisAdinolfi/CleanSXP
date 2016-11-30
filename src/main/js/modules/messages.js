@@ -12,11 +12,11 @@
 				$scope.app.configHeader({contextButton:'addMessage', title: 'Messages'});
 				refresh();
 
-				$scope.open = function(chat){ 
-					$('.tab').removeClass('active');
-					$('#tab'+chat).addClass('active');
-					$('.well').removeClass('chatActive');
-					$('#'+chat).addClass('chatActive');
+				$scope.open = function(chat){ //Set a clicked active
+					angular.element('.tab').removeClass('active');
+					angular.element('#tab'+chat).addClass('active');
+					angular.element('.well').removeClass('chatActive');
+					angular.element('#'+chat).addClass('chatActive');
 				}
 
 				$scope.addMessage = function(chat, messageContent) {
@@ -32,7 +32,7 @@
 					}
 				};
 
-				function refresh(){
+				function refresh(){ //Refresh request
 					$scope.messages = [];
 					$scope.chats = [];
 					//User is available thanks to restApi.js

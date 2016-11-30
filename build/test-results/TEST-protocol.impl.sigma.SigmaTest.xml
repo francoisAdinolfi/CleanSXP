@@ -1,7 +1,7 @@
 <?xml version="1.1" encoding="UTF-8"?>
-<testsuite name="protocol.impl.sigma.SigmaTest" tests="1" failures="0" errors="0" timestamp="2016-11-22T15:38:38" hostname="debian" time="0.434">
+<testsuite name="protocol.impl.sigma.SigmaTest" tests="1" failures="0" errors="0" timestamp="2016-11-30T12:27:37" hostname="debian" time="0.402">
   <properties/>
-  <testcase name="test" classname="protocol.impl.sigma.SigmaTest" time="0.434"/>
+  <testcase name="test" classname="protocol.impl.sigma.SigmaTest" time="0.402"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
