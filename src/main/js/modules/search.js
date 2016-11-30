@@ -26,6 +26,8 @@
 
                     $scope.search = function() { //The function that launches the search
                         $scope.results = [];
+                        $scope.errorSearch = false;
+                        $scope.searchItem = true;
                         if ($scope.stream != null) { //Abort currently running search
                             $scope.stream.abort();
                         }
@@ -52,21 +54,32 @@
                                 for (var i = 0; i < node.length; i++) { // push it to results
                                     console.log(node[i]);
                                     $scope.pushResult(node[i]);
+                                	$scope.searchItem = false;
                                 }
-
                             }
+                            console.log($scope.results.length);
+                            if($scope.results.length == 0)
+                            	$scope.errorSearch = true;
+                            else
+                            	$scope.errorSearch = false;
+                        	
                             if ($scope.results.length === 1000 || node == null || node.length == 0) { //Abort the search when too many matches, or none left
                                 $scope.stream.abort();
                                 $scope.stream = null;
+                                $scope.searchItem = false;
                             }
                         });
 
-              
+                        /*$http.get(RESTAPISERVER + "/api/search/simple?title=" + $scope.research).then(function(response) {
+                        	$scope.results = response.data;
+                        }, function(response) {
+
+                        });*/
                     }
 
                 }
             })
-            
+
             .state('searchViewItem', {
 			  url: '/search/view/:id',
 			  templateUrl: 'items/item.html',
@@ -78,9 +91,10 @@
 				  });
 				}
 			});
-            
-            
-            
-            
+
+
+
+
     });
 })();
+
